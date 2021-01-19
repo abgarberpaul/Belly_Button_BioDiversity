@@ -17,7 +17,9 @@ function DisplayPage(sampleID){
           // Use filter() to pass the function as its argument
           var filterBarChart = incomingData.samples.filter(sample => sample.id == sampleID)[0];
             console.log(filterBarChart)
+        
 
+           // NOTE TO SELF<< THIS NEEDS TO SORT FOR TOP TEN <<< NOTE TO SELF 
             var BarData = [{
                 x: filterBarChart.otu_ids.slice(0,10),
                 y: filterBarChart.sample_values.slice(0,10).map(val=>"OTU "+val),
