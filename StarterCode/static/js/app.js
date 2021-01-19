@@ -13,10 +13,11 @@ function DisplayPage(sampleID){
     console.log(sampleID)
     d3.json("samples.json").then((incomingData)=>{
 
-        
+          // INSERT BAR CHART<<<<<<<<<<<<<<<<<<<<
           // Use filter() to pass the function as its argument
           var filterBarChart = incomingData.samples.filter(sample => sample.id == sampleID)[0];
             console.log(filterBarChart)
+
             var BarData = [{
                 x: filterBarChart.otu_ids.slice(0,10),
                 y: filterBarChart.sample_values.slice(0,10).map(val=>"OTU "+val),
@@ -24,31 +25,40 @@ function DisplayPage(sampleID){
                 type: "bar",
                 orientation: "h"
             }]
+            
             var BarLayout= {
                 title: "BellyButton Bar Chart"
             }
+            
             Plotly.newPlot("bar", BarData, BarLayout)
 
             //INSERT BUBBLE CHART 
-                //VAR DATA
-                //VAR LAYOUT
-                //PLOTLY for BUBBLE
-                var filterBubbleChart = incomingData.samples.filter(sample => sample.id == sampleID)[0];
-                console.log(filterBubbleChart)
+                
+            var filterBubbleChart = incomingData.samples.filter(sample => sample.id == sampleID)[0];
+            console.log(filterBubbleChart)
 
-                var BubbleData = [{
-                    x: filterBubbleChart.otu_ids.slice(0,10),
-                    y: filterBubbleChart.sample_values.slice(0,10),
-                    //text: filterBubbleChart.otu_labels.slice(0,10),
-                    mode: "markers",
-                    markers: {
-                        size:[40, 60, 80, 100]
-                    }
-                }]
-                var BubbleLayout= {
-                    title: "BellyButton Bubble Chart"
+            //VAR DATA
+            var BubbleData = [{
+                x: filterBarChart.otu_ids,
+                y: filterBarChart.sample_values,
+                text: filterBarChart.otu_labels,
+                mode: 'markers',
+                marker: {
+                    size: filterBarChart.sample_values
                 }
-                Plotly.newPlot("bubble", BubbleData, BubbleLayout)
+
+            }];
+
+            //VAR LAYOUT
+            var BubbleLayout= [{
+                title: "BellyButton Bubble Chart"
+
+            }]
+        
+            //PLOTLY for BUBBLE
+            Plotly.newPlot('bubble', BubbleData, BubbleLayout)
+
+
             //INSERT DEMOGRAPHIC INFO
             // .filter on incomingData.metadata.filter( ETC )
             // d3.select on #sample-metadata
