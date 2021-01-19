@@ -27,7 +27,7 @@ function DisplayPage(sampleID){
             }]
             
             var BarLayout= {
-                title: "BellyButton Bar Chart"
+                title: "Belly Button Bar Chart"
             }
             
             Plotly.newPlot("bar", BarData, BarLayout)
@@ -39,21 +39,23 @@ function DisplayPage(sampleID){
 
             //VAR DATA
             var BubbleData = [{
+                mode: 'markers',
                 x: filterBarChart.otu_ids,
                 y: filterBarChart.sample_values,
                 text: filterBarChart.otu_labels,
-                mode: 'markers',
+                
                 marker: {
+                    color: filterBarChart.sample_values,
+                    colorscale: "Portland",
                     size: filterBarChart.sample_values
                 }
-
             }];
 
             //VAR LAYOUT
-            var BubbleLayout= [{
-                title: "BellyButton Bubble Chart"
-
-            }]
+            var BubbleLayout= {
+                title: "Belly Button Bubble Chart",
+                showlegend: false
+            }
         
             //PLOTLY for BUBBLE
             Plotly.newPlot('bubble', BubbleData, BubbleLayout)
