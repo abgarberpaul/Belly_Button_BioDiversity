@@ -33,7 +33,22 @@ function DisplayPage(sampleID){
                 //VAR DATA
                 //VAR LAYOUT
                 //PLOTLY for BUBBLE
+                var filterBubbleChart = incomingData.samples.filter(sample => sample.id == sampleID)[0];
+                console.log(filterBubbleChart)
 
+                var BubbleData = [{
+                    x: filterBubbleChart.otu_ids.slice(0,10),
+                    y: filterBubbleChart.sample_values.slice(0,10),
+                    //text: filterBubbleChart.otu_labels.slice(0,10),
+                    mode: "markers",
+                    markers: {
+                        size:[40, 60, 80, 100]
+                    }
+                }]
+                var BubbleLayout= {
+                    title: "BellyButton Bubble Chart"
+                }
+                Plotly.newPlot("bubble", BubbleData, BubbleLayout)
             //INSERT DEMOGRAPHIC INFO
             // .filter on incomingData.metadata.filter( ETC )
             // d3.select on #sample-metadata
