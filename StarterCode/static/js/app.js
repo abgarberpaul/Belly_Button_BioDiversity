@@ -39,7 +39,7 @@ function DisplayPage(sampleID){
             var filterBubbleChart = incomingData.samples.filter(sample => sample.id == sampleID)[0];
             console.log(filterBubbleChart)
 
-            //VAR DATA
+            //VAR BUBBLE DATA
             var BubbleData = [{
                 mode: 'markers',
                 x: filterBarChart.otu_ids,
@@ -53,7 +53,7 @@ function DisplayPage(sampleID){
                 }
             }];
 
-            //VAR LAYOUT
+            //VAR BUBBLE LAYOUT
             var BubbleLayout= {
                 title: "Belly Button Bubble Chart",
                 showlegend: false
@@ -68,7 +68,42 @@ function DisplayPage(sampleID){
             // d3.select on #sample-metadata
             // loop through dictionary and append on h5 elements 
             // to refenece set to .text (printing key value)
-            
+
+            var metadata_panel = d3.select("#sample-metadata");
+            metadata_panel.html("");
+            Object.entries(metadata).forEach(([key, value]) => {
+                metadata_panel.append("p").text(`${key}: ${value}`);
+            });
+
+            metadata_new = data["metadata"].filter(function(metadata) {
+
+                return metadata.id == newValue;
+          
+            });
+
+            // var filterInfoChart = incomingData.metadata.filter(sample => sample.id == sampleID)[0];
+            // console.log(filterInfoChart)
+
+            // function buildTable(url) {
+            //     // clear out the elements of the table first
+            //     var table = d3.select("#summary-table");
+            //     var tbody = table.select("tbody");
+            //     tbody.html("");
+                
+            //     var id_name 
+            //     // call the API then fill in the elements of the table
+            //     d3.json(url).then(function(data) {
+            //       data.dataset.data.forEach(function(d) {
+            //         trow = tbody.append("tr");
+            //         trow.append("td").text(d[0]);
+            //         trow.append("td").text(d[1]);
+            //         trow.append("td").text(d[2]);
+            //         trow.append("td").text(d[3]);
+            //         trow.append("td").text(d[4]);
+            //         trow.append("td").text(d[5]);
+            //       });
+            //     })
+            //   }    
     })
 
 }
