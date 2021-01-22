@@ -83,10 +83,10 @@ d3.json("samples.json").then((incomingData)=>{
                 //INSERT GAUGE (base code from instructions)
                 // take wash frequency from panel data (panelData.washfreq)
 
-                var guageData = [
+                var gaugeData = [
                     {
                       domain: { x: [0, 1], y: [0, 1] },
-                    value: panelData.wfreq,
+                      value: panelData.wfreq,
                       title: { text: "Washing Frequency" },
                       type: "indicator",
                       mode: "gauge+number",
@@ -107,7 +107,7 @@ d3.json("samples.json").then((incomingData)=>{
                   ];
                   
                   var gaugeLayout = { width: 600, height: 450, margin: { t: 0, b: 0 } };
-                  Plotly.newPlot('gauge', guageData, gaugeLayout);
+                  Plotly.newPlot('gauge', gaugeData, gaugeLayout);
         })
     }
 
