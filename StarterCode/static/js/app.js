@@ -18,9 +18,7 @@ d3.json("samples.json").then((incomingData)=>{
               // Use filter() to pass the function as its argument
                 var filterBarChart = incomingData.samples.filter(sample => sample.id == sampleID)[0];
                 console.log(filterBarChart)
-                
-        
-                // NOTE TO SELF<< THIS NEEDS TO SORT FOR TOP TEN <<< NOTE TO SELF 
+               
                 var BarData = [{
                     x: filterBarChart.otu_ids.slice(0,10),
                     y: filterBarChart.sample_values.slice(0,10).map(val=>"OTU "+val),
@@ -83,32 +81,33 @@ d3.json("samples.json").then((incomingData)=>{
                 })
 
                 //INSERT GAUGE (base code from instructions)
+                // take wash frequency from panel data (panelData.washfreq)
 
-                var data = [
+                var guageData = [
                     {
                       domain: { x: [0, 1], y: [0, 1] },
-                      value: 450,
-                      title: { text: "Speed" },
+                    value: panelData.wfreq,
+                      title: { text: "Washing Frequency" },
                       type: "indicator",
-                      mode: "gauge+number+delta",
+                      mode: "gauge+number",
                       delta: { reference: 380 },
                       gauge: {
-                        axis: { range: [null, 500] },
+                        axis: { range: [null, 10] },
                         steps: [
                           { range: [0, 250], color: "lightgray" },
                           { range: [250, 400], color: "gray" }
                         ],
-                        threshold: {
-                          line: { color: "red", width: 4 },
-                          thickness: 0.75,
-                          value: 490
-                        }
+                        // threshold: {
+                        //   line: { color: "red", width: 4 },
+                        //   thickness: 0.75,
+                        // //   value: panelData.wfrewq
+                        // }
                       }
                     }
                   ];
                   
-                  var layout = { width: 600, height: 450, margin: { t: 0, b: 0 } };
-                  Plotly.newPlot('myDiv', data, layout);
+                  var gaugeLayout = { width: 600, height: 450, margin: { t: 0, b: 0 } };
+                  Plotly.newPlot('gauge', guageData, gaugeLayout);
         })
     }
 
