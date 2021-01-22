@@ -1,7 +1,7 @@
 # Belly_Button_BioDiversity
 The wonders of the worlds living on human skin (a Dashboard project)
 
-Use `samples.json` to demonstrate the powers of a responsive dashboard. Using D3 and Plotly, render the data in easy to read visualizations including a bar chart, bubble chart and gauge. Deploy to a free static page via github repo.
+Use `samples.json` to demonstrate the powers of a responsive dashboard. Using D3 and Plotly, render the data in easy-to-read visualizations including a bar chart, bubble chart and gauge reader. Ensure the charts respond to reader input (through the drop-down menu of subject participants.) Deploy to a free static page via github repo.
 
 * Full Javascript in Starter Code/static folder (app.js)
 
