@@ -11,4 +11,4 @@ Use `samples.json` to demonstrate the powers of a responsive dashboard. Using D3
 
 Example of my completed chart below:
 
-  ![Dash Example](Images/Belly_Button_Dash_EX)
+  ![Dash Example](Images/Belly_Button_Dash_EX.jpg)
